@@ -1,5 +1,5 @@
 -- enabled lsp
-vim.lsp.enable('phpactor')
+vim.lsp.enable 'phpactor'
 
 --undotree keybindings
 vim.keymap.set('n', '<leader>u', vim.cmd.UndotreeToggle, { desc = '[U]ndo Tree Toggle' })
@@ -170,6 +170,3 @@ return {
     end,
   },
 }
-}
-
-
