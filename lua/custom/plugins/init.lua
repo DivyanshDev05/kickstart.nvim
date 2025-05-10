@@ -2,15 +2,10 @@
 --  I promise not to create any merge conflicts in this directory :)
 --
 -- See the kickstart.nvim README for more information
+
+vim.keymap.set('n', '<leader>u', vim.cmd.UndotreeToggle, { desc = '[U]ndo Tree Toggle' })
+vim.keymap.set('i', 'kl', '<esc>')
+
 return {
-  -- undotree
-  {
-    'mbbill/undotree.nvim',
-    opts = {
-      on_attach = function()
-        -- normal mode
-        map('n', '<leader>u', vim.cmd.UndotreeToggle { desc = 'undo tree' })
-      end,
-    },
-  },
+  'mbbill/undotree',
 }
