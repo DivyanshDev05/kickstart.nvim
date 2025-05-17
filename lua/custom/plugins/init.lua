@@ -1,7 +1,5 @@
--- You can add your own plugins here or in other files in this directory!
---  I promise not to create any merge conflicts in this directory :)
---
--- See the kickstart.nvim README for more information
+-- enabled lsp
+vim.lsp.enable('phpactor')
 
 --undotree keybindings
 vim.keymap.set('n', '<leader>u', vim.cmd.UndotreeToggle, { desc = '[U]ndo Tree Toggle' })
@@ -9,6 +7,7 @@ vim.keymap.set('n', '<leader>u', vim.cmd.UndotreeToggle, { desc = '[U]ndo Tree T
 
 --personal keybindings
 vim.keymap.set('i', 'kl', '<esc>')
+vim.keymap.set('n', '<leader>bd', ':bdelete<CR>', { desc = '[B]uffer [D]elete' })
 vim.opt.tabstop = 4
 vim.opt.relativenumber = true
 
