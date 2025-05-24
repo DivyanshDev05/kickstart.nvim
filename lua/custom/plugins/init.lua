@@ -1,5 +1,5 @@
 -- enabled lsp
-vim.lsp.enable 'phpactor'
+vim.lsp.enable('phpactor')
 
 --undotree keybindings
 vim.keymap.set('n', '<leader>u', vim.cmd.UndotreeToggle, { desc = '[U]ndo Tree Toggle' })
@@ -7,7 +7,9 @@ vim.keymap.set('n', '<leader>u', vim.cmd.UndotreeToggle, { desc = '[U]ndo Tree T
 --personal keybindings
 vim.keymap.set('i', 'kl', '<esc>')
 vim.keymap.set('n', '<leader>bd', ':bdelete<CR>', { desc = '[B]uffer [D]elete' })
-vim.opt.tabstop = 4
+vim.keymap.set('n', '<leader>q', ':q<CR>', { desc = '[Q]uit Nvim' })
+vim.keymap.set('n', '<leader>m', ':Mason<CR>', { desc = '[M]ason' })
+vim.keymap.set('n', '<leader>w', ':w<CR>', { desc = '[W]rite/Save File' })
 vim.opt.relativenumber = true
 
 --telescope keybindings
