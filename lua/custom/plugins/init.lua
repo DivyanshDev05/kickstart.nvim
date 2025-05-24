@@ -1,3 +1,19 @@
+-- setting filename on top
+vim.opt.winbar = "%=%m %f"
+
+-- php related config
+vim.api.nvim_create_autocmd({'BufEnter', 'BufWinEnter'}, {
+  pattern = {'*.php', '*.install', '*.module'},
+  callback = function()
+    vim.opt_local.colorcolumn = "85"
+    vim.cmd [[ highlight ColorColumn ctermbg=darkgray guibg=darkgreen ]]
+    vim.opt_local.expandtab = true
+    vim.opt_local.shiftwidth = 4
+    vim.opt_local.tabstop = 4
+    vim.opt_local.softtabstop = 4
+  end
+})
+
 -- enabled lsp
 vim.lsp.enable('phpactor')
 
@@ -5,8 +21,29 @@ vim.lsp.enable('phpactor')
 vim.keymap.set('n', '<leader>u', vim.cmd.UndotreeToggle, { desc = '[U]ndo Tree Toggle' })
 
 --personal keybindings
+local wk = require("which-key")
 vim.keymap.set('i', 'kl', '<esc>')
-vim.keymap.set('n', '<leader>bd', ':bdelete<CR>', { desc = '[B]uffer [D]elete' })
+-- Buffer Group
+wk.add({
+  { "<leader>b", group = "[B]uffer" },
+  { "<leader>bd", desc = "[B]uffer [D]elete" },
+  { "<leader>bb", desc = "[B]uffer [B]ack" },
+  { "<leader>be", desc = "[B]uffer [E]xplorer" },
+})
+vim.keymap.set('n', '<leader>bd', ':bdelete<CR>')
+vim.keymap.set('n', '<leader>bb', ':e #<CR>')
+-- Commands Group
+wk.add({
+  { "<leader>c", group = "[C]ommands" },
+  { "<leader>cb", desc = "[C]ommand [B]ash" },
+  { "<leader>cg", desc = "[C]ommand [G]it" },
+  { "<leader>ch", desc = "[C]ommand [H]elp" },
+  { "<leader>cs", desc = "[C]ommand [S]ed" },
+})
+vim.keymap.set('n', '<leader>cb', ':!')
+vim.keymap.set('n', '<leader>ch', ':h ')
+vim.keymap.set('n', '<leader>cg', ':!git ')
+vim.keymap.set('n', '<leader>cs', ':%s')
 vim.keymap.set('n', '<leader>l', ':Lazy<CR>', { desc = '[L]azy open' })
 vim.keymap.set('n', '<leader>m', ':Mason<CR>', { desc = '[M]ason open' })
 vim.keymap.set('n', '<leader>q', ':q<CR>', { desc = '[Q]uit Nvim' })
