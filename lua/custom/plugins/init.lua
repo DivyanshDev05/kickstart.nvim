@@ -38,11 +38,13 @@ wk.add({
   { "<leader>cb", desc = "[C]ommand [B]ash" },
   { "<leader>cg", desc = "[C]ommand [G]it" },
   { "<leader>ch", desc = "[C]ommand [H]elp" },
+  { "<leader>cr", desc = "[C]ommand [R]eload buffer" },
   { "<leader>cs", desc = "[C]ommand [S]ed" },
 })
 vim.keymap.set('n', '<leader>cb', ':!')
 vim.keymap.set('n', '<leader>ch', ':h ')
-vim.keymap.set('n', '<leader>cg', ':!git ')
+vim.keymap.set('n', '<leader>cg', '<cmd>LazyGit<cr>')
+vim.keymap.set('n', '<leader>cr', ':e!<CR>')
 vim.keymap.set('n', '<leader>cs', ':%s')
 vim.keymap.set('n', '<leader>l', ':Lazy<CR>', { desc = '[L]azy open' })
 vim.keymap.set('n', '<leader>m', ':Mason<CR>', { desc = '[M]ason open' })
@@ -207,4 +209,24 @@ return {
       })
     end,
   },
+  {
+    "kdheepak/lazygit.nvim",
+    lazy = true,
+    cmd = {
+        "LazyGit",
+        "LazyGitConfig",
+        "LazyGitCurrentFile",
+        "LazyGitFilter",
+        "LazyGitFilterCurrentFile",
+    },
+    -- optional for floating window border decoration
+    dependencies = {
+        "nvim-lua/plenary.nvim",
+    },
+    -- setting the keybinding for LazyGit with 'keys' is recommended in
+    -- order to load the plugin when the command is run for the first time
+    keys = {
+        -- { "<leader>lg", "<cmd>LazyGit<cr>", desc = "LazyGit" }
+    }
+  }
 }
