@@ -1,46 +1,46 @@
 -- setting filename on top
-vim.opt.winbar = "%=%m %f"
+vim.opt.winbar = '%=%m %f'
 
 -- php related config
-vim.api.nvim_create_autocmd({'BufEnter', 'BufWinEnter'}, {
-  pattern = {'*.php', '*.install', '*.module'},
+vim.api.nvim_create_autocmd({ 'BufEnter', 'BufWinEnter' }, {
+  pattern = { '*.php', '*.install', '*.module' },
   callback = function()
-    vim.opt_local.colorcolumn = "85"
+    vim.opt_local.colorcolumn = '85'
     vim.cmd [[ highlight ColorColumn ctermbg=darkgray guibg=darkgreen ]]
     vim.opt_local.expandtab = true
     vim.opt_local.shiftwidth = 4
     vim.opt_local.tabstop = 4
     vim.opt_local.softtabstop = 4
-  end
+  end,
 })
 
 -- enabled lsp
-vim.lsp.enable('phpactor')
+vim.lsp.enable 'phpactor'
 
 --undotree keybindings
 vim.keymap.set('n', '<leader>u', vim.cmd.UndotreeToggle, { desc = '[U]ndo Tree Toggle' })
 
 --personal keybindings
-local wk = require("which-key")
+local wk = require 'which-key'
 vim.keymap.set('i', 'kl', '<esc>')
 -- Buffer Group
-wk.add({
-  { "<leader>b", group = "[B]uffer" },
-  { "<leader>bd", desc = "[B]uffer [D]elete" },
-  { "<leader>bb", desc = "[B]uffer [B]ack" },
-  { "<leader>be", desc = "[B]uffer [E]xplorer" },
-})
+wk.add {
+  { '<leader>b', group = '[B]uffer' },
+  { '<leader>bd', desc = '[B]uffer [D]elete' },
+  { '<leader>bb', desc = '[B]uffer [B]ack' },
+  { '<leader>be', desc = '[B]uffer [E]xplorer' },
+}
 vim.keymap.set('n', '<leader>bd', ':bdelete<CR>')
 vim.keymap.set('n', '<leader>bb', ':e #<CR>')
 -- Commands Group
-wk.add({
-  { "<leader>c", group = "[C]ommands" },
-  { "<leader>cb", desc = "[C]ommand [B]ash" },
-  { "<leader>cg", desc = "[C]ommand [G]it" },
-  { "<leader>ch", desc = "[C]ommand [H]elp" },
-  { "<leader>cr", desc = "[C]ommand [R]eload buffer" },
-  { "<leader>cs", desc = "[C]ommand [S]ed" },
-})
+wk.add {
+  { '<leader>c', group = '[C]ommands' },
+  { '<leader>cb', desc = '[C]ommand [B]ash' },
+  { '<leader>cg', desc = '[C]ommand [G]it' },
+  { '<leader>ch', desc = '[C]ommand [H]elp' },
+  { '<leader>cr', desc = '[C]ommand [R]eload buffer' },
+  { '<leader>cs', desc = '[C]ommand [S]ed' },
+}
 vim.keymap.set('n', '<leader>cb', ':!')
 vim.keymap.set('n', '<leader>ch', ':h ')
 vim.keymap.set('n', '<leader>cg', '<cmd>LazyGit<cr>')
@@ -210,23 +210,23 @@ return {
     end,
   },
   {
-    "kdheepak/lazygit.nvim",
+    'kdheepak/lazygit.nvim',
     lazy = true,
     cmd = {
-        "LazyGit",
-        "LazyGitConfig",
-        "LazyGitCurrentFile",
-        "LazyGitFilter",
-        "LazyGitFilterCurrentFile",
+      'LazyGit',
+      'LazyGitConfig',
+      'LazyGitCurrentFile',
+      'LazyGitFilter',
+      'LazyGitFilterCurrentFile',
     },
     -- optional for floating window border decoration
     dependencies = {
-        "nvim-lua/plenary.nvim",
+      'nvim-lua/plenary.nvim',
     },
     -- setting the keybinding for LazyGit with 'keys' is recommended in
     -- order to load the plugin when the command is run for the first time
     keys = {
-        -- { "<leader>lg", "<cmd>LazyGit<cr>", desc = "LazyGit" }
-    }
-  }
+      -- { "<leader>lg", "<cmd>LazyGit<cr>", desc = "LazyGit" }
+    },
+  },
 }
